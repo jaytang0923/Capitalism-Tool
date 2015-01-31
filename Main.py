@@ -9,7 +9,7 @@ import UIMain
 import product
 import wx,os,logging
 import chardet
-import MyLog
+import MyLog,translate
 class Main(UIMain.MainFrame):
     def __init__(self,parent):
         UIMain.MainFrame.__init__(self, parent)
@@ -91,7 +91,8 @@ class Main(UIMain.MainFrame):
         dialog.Destroy()
     
     def StartTranslate( self, event ):
-        event.Skip()
+        self.log.info("Start Translate")
+        translate.Translate(None).StartTranslate(self.sourcefile,self.refofile)
         
 class mainapp(wx.App):
     def __init__(self,redirect=False,filename=None):

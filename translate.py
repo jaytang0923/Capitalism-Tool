@@ -5,7 +5,7 @@ Created on 2015年1月31日 上午11:13:54
 
 @author: jay
 '''
-import os
+import os,logging
 class Translate(object):
     '''
     classdocs
@@ -16,9 +16,20 @@ class Translate(object):
         '''
         Constructor
         '''
+        self.log = logging.getLogger('main.translate') 
         
+    def StartTranslate(self,srcfile,reffile):
+        self.log.info("Translate file"+srcfile+" refer file"+reffile)
+        if not self.Open(srcfile):
+            return False
+        
+        self.Read()
+        self.Close()
+        
+            
     def selftest(self):
-        pass
+        self.StartTranslate("Translate.txt", "")
     
 if __name__=="__main__":
-    pass
+    tl=Translate(None)
+    tl.selftest()
